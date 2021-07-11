@@ -1,0 +1,16 @@
+@import "bootstrap";
+$main-color: #3EB489;
+
+.bg-main {
+  background-color: $main-color;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
