@@ -1,8 +1,12 @@
 @import "bootstrap";
-$main-color: #3EB489;
+$main-color: #ff2a36;
 
 .bg-main {
-  background-color: $main-color;
+  background-color: #2f2f2f;
+}
+
+.main-color {
+  color: $main-color !important;
 }
 
 body {
