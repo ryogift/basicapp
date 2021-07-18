@@ -18,13 +18,10 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
-    services:
-      image: sqlite
     container:
       image: ruby:3.0.2
       env:
         RAILS_ENV: test
-        DATABASE_HOST: sqlite
     steps:
       - uses: actions/checkout@v2
       - name: Cache node modules
@@ -39,6 +36,11 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+      - name: sqlite3 install
+        run: |
+          sudo apt install libsqlite3-dev
+          gem install sqlite3  --source 'https://rubygems.org/'
+          dpkg -L libsqlite3-dev
       - name: Cache bundle gems
         uses: actions/cache@v2
         with:
