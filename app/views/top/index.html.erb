@@ -10,6 +10,7 @@
       <p>
         <%= render(ExampleComponent.new(title: "my title").with_content("Hello, World!")) %>
       </p>
+      <%= render(ProductComponent.with_collection(@products)) %>
     </div>
   </div>
 </div>

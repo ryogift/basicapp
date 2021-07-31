@@ -4,6 +4,7 @@ class ProductTest < ActiveSupport::TestCase
   def setup
     @product = products(:one)
   end
+
   # validates
   test "名称が必須であること" do
     @product.name = ""
