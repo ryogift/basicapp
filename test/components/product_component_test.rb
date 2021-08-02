@@ -7,7 +7,7 @@ class ProductComponentTest < ViewComponent::TestCase
 
   def test_component_renders_something_useful
     render_inline(ProductComponent.with_collection(@products))
-    assert_selector("li", text: "MyString1")
-    assert_selector("li", text: "MyString2")
+    assert_selector("td", text: "MyString1")
+    assert_selector("td", text: "MyString2")
   end
 end
