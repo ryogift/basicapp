@@ -17,7 +17,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create post" do
     assert_difference("Product.count") do
-      post products_url, params: { product: { name: @product.name } }
+      post products_url, params: { product: { name: "sample" } }
     end
 
     assert_redirected_to product_url(Product.last)

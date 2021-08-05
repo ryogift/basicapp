@@ -17,4 +17,9 @@ class ProductTest < ActiveSupport::TestCase
     @product.valid?
     assert_includes @product.errors[:name], I18n.t("errors.messages.too_long", count: 100)
   end
+
+  test "名称がユニークであること" do
+    product_dup = @product.dup
+    assert_not product_dup.valid?
+  end
 end
