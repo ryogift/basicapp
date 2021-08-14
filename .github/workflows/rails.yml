@@ -59,13 +59,9 @@ jobs:
         run: |
           bundle config set --local path 'vendor/bundle'
           bundle install --jobs 4 --retry 3
-        working-directory: ./src
       - name: Yarn install
-        run: rails yarn:install
-        working-directory: ./src
+        run: bundle exec rails yarn:install
       - name: DB setup
-        run: rails db:setup
-        working-directory: ./src
+        run: bundle exec rails db:setup
       - name: Run Test
-        run: rails test
-        working-directory: ./src
+        run: bundle exec rails test
