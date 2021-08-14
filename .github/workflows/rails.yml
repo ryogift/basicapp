@@ -21,8 +21,8 @@ jobs:
     services:
       db:
         image: postgres
-      env:
-        POSTGRES_PASSWORD: password
+        env:
+          POSTGRES_PASSWORD: password
     container:
       image: ruby:3.0.2
       env:
