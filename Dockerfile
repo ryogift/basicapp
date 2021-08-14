@@ -5,12 +5,15 @@ RUN wget https://dl.yarnpkg.com/debian/pubkey.gpg && apt-key add pubkey.gpg && \
 
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client yarn
 
-RUN mkdir /apps
-ENV APP_ROOT /apps
-WORKDIR $APP_ROOT
-
-ADD ./Gemfile $APP_ROOT/Gemfile
-ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
+WORKDIR /basicapp
+COPY ./Gemfile /basicapp/Gemfile
+COPY ./Gemfile.lock /basicapp/Gemfile.lock
 
 RUN yarn install && bundle install
-ADD . $APP_ROOT
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
+
+CMD ["rails", "server", "-b", "0.0.0.0"]
