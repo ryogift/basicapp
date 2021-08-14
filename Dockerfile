@@ -9,7 +9,7 @@ WORKDIR /basicapp
 COPY ./Gemfile /basicapp/Gemfile
 COPY ./Gemfile.lock /basicapp/Gemfile.lock
 
-RUN yarn install && bundle install
+RUN bundle install && rails yarn:install
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
