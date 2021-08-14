@@ -55,13 +55,17 @@ jobs:
           wget https://dl.yarnpkg.com/debian/pubkey.gpg && apt-key add pubkey.gpg && \
           echo 'deb http://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
           apt-get update -qq && apt-get install -y nodejs postgresql-client yarn
-      - name: Install Bundler
-        run: gem install bundler --no-document -v $(grep "BUNDLED WITH" -1 Gemfile.lock | tail -n 1)
-      - name: Bundle install
-        run: bundle install --path=vendor/bundle --jobs 4 --retry 3
+      - name: Bundler setup
+        run: |
+          bundle config set --local path 'vendor/bundle'
+          bundle install --jobs 4 --retry 3
+        working-directory: ./src
       - name: Yarn install
         run: rails yarn:install
+        working-directory: ./src
       - name: DB setup
         run: rails db:setup
+        working-directory: ./src
       - name: Run Test
         run: rails test
+        working-directory: ./src
