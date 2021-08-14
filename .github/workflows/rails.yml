@@ -18,6 +18,11 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres
+      env:
+        POSTGRES_PASSWORD: password
     container:
       image: ruby:3.0.2
       env:
@@ -36,11 +41,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: sqlite3 install
-        run: |
-          apt-get install libsqlite3-dev
-          gem install sqlite3  --source 'https://rubygems.org/'
-          dpkg -L libsqlite3-dev
       - name: Cache bundle gems
         uses: actions/cache@v2
         with:
@@ -50,22 +50,18 @@ jobs:
             ${{ runner.os }}-gem-${{ env.cache-name }}-
             ${{ runner.os }}-gem-
             ${{ runner.os }}-
-      - name: Install Node.js and Yarn
+      - name: Install Middleware
         run: |
-          # https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions
-          curl -sL https://deb.nodesource.com/setup_12.x | bash -
-          apt-get install -y nodejs
-          # https://classic.yarnpkg.com/en/docs/install#debian-stable
-          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-          echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-          apt update && apt install yarn
+          wget https://dl.yarnpkg.com/debian/pubkey.gpg && apt-key add pubkey.gpg && \
+          echo 'deb http://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
+          apt-get update -qq && apt-get install -y nodejs postgresql-client yarn
+      - name: Yarn install
+        run: rails yarn:install
       - name: Install Bundler
         run: gem install bundler --no-document -v $(grep "BUNDLED WITH" -1 Gemfile.lock | tail -n 1)
       - name: Bundle install
         run: bundle install --path=vendor/bundle --jobs 4 --retry 3
-      - name: Yarn install
-        run: bundle exec rails yarn:install
       - name: DB setup
-        run: bundle exec rails db:setup
+        run: rails db:setup
       - name: Run Test
-        run: bundle exec rails test
+        run: rails test
