@@ -23,10 +23,13 @@ jobs:
         image: postgres
         env:
           POSTGRES_PASSWORD: password
+      redis:
+        image: redis:latest
     container:
       image: ruby:3.0.2
       env:
         RAILS_ENV: test
+        REDIS_URL: "redis://redis:6379/"
     steps:
       - uses: actions/checkout@v2
       - name: Cache node modules
