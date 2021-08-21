@@ -1,0 +1,18 @@
+<p><%= notice %></p>
+
+<h1>Movies</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render(MovieComponent.with_collection(@movies)) %>
+  </tbody>
+</table>
+
+<%= link_to 'New Movie', new_movie_path, class: "btn btn-main m-3" %>
