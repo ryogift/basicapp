@@ -14,6 +14,7 @@ gem "view_component", require: "view_component/engine"
 gem "sidekiq", "6.2.2"
 gem "carrierwave", "2.2.2"
 gem "fog-aws", "3.12.0"
+gem "dotenv-rails", "2.7.6"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
