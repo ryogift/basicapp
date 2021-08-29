@@ -11,8 +11,9 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.7"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "view_component", require: "view_component/engine"
-gem "sidekiq"
+gem "sidekiq", "6.2.2"
 gem "carrierwave", "2.2.2"
+gem "fog-aws", "3.12.0"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
