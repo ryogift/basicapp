@@ -8,6 +8,7 @@ AllCops:
     - config/**/*
     - lib/tasks/*
   NewCops: disable
+  SuggestExtensions: false
 Gemspec/DateAssignment:
   Enabled: true
 Layout/EmptyLinesAroundAttributeAccessor:
