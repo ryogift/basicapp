@@ -10,7 +10,7 @@ gem "webpacker", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.7"
 gem "bootsnap", "1.9.3", require: false
-gem "view_component", require: "view_component/engine"
+gem "view_component", "2.46.0"
 gem "sidekiq", "6.2.2"
 gem "carrierwave", "2.2.2"
 gem "fog-aws", "3.12.0"
