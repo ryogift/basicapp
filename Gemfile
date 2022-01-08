@@ -11,7 +11,7 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.7"
 gem "bootsnap", "1.9.3", require: false
 gem "view_component", "2.47.0"
-gem "sidekiq", "6.2.2"
+gem "sidekiq", "6.3.1"
 gem "carrierwave", "2.2.2"
 gem "fog-aws", "3.12.0"
 gem "dotenv-rails", "2.7.6"
