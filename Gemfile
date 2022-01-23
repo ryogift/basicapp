@@ -9,9 +9,9 @@ gem "puma", "~> 5.0"
 gem "webpacker", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.7"
-gem "bootsnap", "1.9.3", require: false
-gem "view_component", "2.47.0"
-gem "sidekiq", "6.3.1"
+gem "bootsnap", "1.10.2", require: false
+gem "view_component", "2.48.0"
+gem "sidekiq", "6.4.0"
 gem "carrierwave", "2.2.2"
 gem "fog-aws", "3.12.0"
 gem "dotenv-rails", "2.7.6"
