@@ -7,6 +7,9 @@ AllCops:
     - vendor/**/*
     - config/**/*
     - lib/tasks/*
+    - node_modules/**/*
+    - log/**/*
+    - tmp/**/*
   NewCops: enable
   SuggestExtensions: false
 Layout/LineLength:
